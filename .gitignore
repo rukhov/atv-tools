@@ -1,0 +1,8 @@
+/build
+/install
+__pycache__
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts

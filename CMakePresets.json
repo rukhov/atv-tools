@@ -1,0 +1,92 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "linux-dbg",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-rel",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "windows-dbg",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-rel",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "windows-rel-opt",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets":[
+    {
+      "name": "windows-rel",
+      "configurePreset": "windows-rel",
+      "configuration": "RelWithDebInfo",
+      "jobs": 8
+    },
+    {
+      "name": "windows-rel-opt",
+      "configurePreset": "windows-rel-opt",
+      "configuration": "Release",
+      "jobs": 8
+    },
+    {
+      "name": "windows-dbg",
+      "configurePreset": "windows-dbg",
+      "configuration": "Debug",
+      "jobs": 8
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-dbg",
+      "configurePreset": "windows-dbg",
+      "configuration": "Debug",
+      "output": {"outputOnFailure": true},
+      "execution": {"noTestsAction": "error", "stopOnFailure": true}
+    },
+    {
+      "name": "linux-dbg",
+      "configurePreset": "linux-dbg",
+      "output": {"outputOnFailure": true},
+      "execution": {"noTestsAction": "error", "stopOnFailure": true}
+    }
+  ]
+}
