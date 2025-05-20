@@ -2,7 +2,17 @@ cmake_minimum_required(VERSION 3.26)
 
 project(atv-tools VERSION 1.0.0 LANGUAGES CXX C)
 
+set( CMAKE_MESSAGE_LOG_LEVEL VERBOSE )
+
 enable_testing()
+
+set(VCPKG_TARGET_ARCHITECTURE x64)
+set(VCPKG_CRT_LINKAGE dynamic)
+set(VCPKG_LIBRARY_LINKAGE dynamic)
+
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_EXTENSIONS Off)
 
 if(UNIX)
     add_compile_options( -fPIC -flto=auto)
@@ -16,5 +26,7 @@ elseif(WIN32)
     string(REPLACE "/O2" "/Od" CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
     string(REPLACE "/Ob1" "/Ob0" CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
 endif()
+
+include(cmake/FindLibAtvTools.cmake)
 
 add_subdirectory(src)

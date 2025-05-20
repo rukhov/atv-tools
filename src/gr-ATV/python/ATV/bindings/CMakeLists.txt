@@ -25,7 +25,9 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND ATV_python_files
-    TvDecoder_python.cc python_bindings.cc)
+    TvDecoder_python.cc 
+    python_bindings.cc
+)
 
 gr_pybind_make_oot(ATV ../../.. gr::ATV "${ATV_python_files}")
 

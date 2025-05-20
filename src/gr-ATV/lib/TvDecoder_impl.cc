@@ -8,6 +8,10 @@
 #include "TvDecoder_impl.h"
 #include <gnuradio/io_signature.h>
 
+#include <vector>
+
+#include <lib-atv-tools/decoder.h>
+
 namespace gr {
 namespace ATV {
 
@@ -38,8 +42,8 @@ TvDecoder_impl::~TvDecoder_impl() {}
 
 void TvDecoder_impl::forecast(int noutput_items, gr_vector_int& ninput_items_required)
 {
-    // #pragma message( "implement a forecast that fills in how many items on each input
-    // you need to produce noutput_items and remove this warning")
+    // #pragma message( "implement a forecast that fills in how many items on each
+    // input you need to produce noutput_items and remove this warning")
     /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
 }
 

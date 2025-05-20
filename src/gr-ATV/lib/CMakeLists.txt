@@ -15,7 +15,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED On)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_EXTENSIONS Off)
 
-#list(APPEND ATV_sources TvDecoder_impl.cc)
+list(APPEND ATV_sources TvDecoder_impl.cc)
 
 set(ATV_sources
     "${ATV_sources}"
@@ -26,7 +26,10 @@ if(NOT ATV_sources)
 endif(NOT ATV_sources)
 
 add_library(gnuradio-ATV SHARED ${ATV_sources})
-target_link_libraries(gnuradio-ATV gnuradio::gnuradio-runtime)
+target_link_libraries(gnuradio-ATV 
+    gnuradio::gnuradio-runtime
+    lib-atv-tools::lib-atv-tools
+)
 target_include_directories(
     gnuradio-ATV
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
