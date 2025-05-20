@@ -13,7 +13,7 @@ For encoding the [hacktv](https://github.com/fsphil/hacktv) tool was used.
 ![GnuRadio-color-bars](https://github.com/user-attachments/assets/5d9b85ac-ec47-4c62-a662-037f1fb34b48)
 
 ## Build
-You can download pre-built binaries from the GitHub Actions page: https://github.com/rukhov/analog-tv-tools/actions.
+You can download pre-built binaries from the GitHub Actions page: https://github.com/rukhov/atv-tools/actions.
 Locate the most recent successful build, and download the artifacts compatible with your operating system.
 
 ##
