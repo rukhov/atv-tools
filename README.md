@@ -1,6 +1,7 @@
+This is a draft of readme.
 # Analog TV Tools project
 This project focuses on developing a suite of software tools for decoding analog TV signals. The current toolset includes two primary components:
-- **Command Line Interface (CLI)** for anlog TV decoder: This command line tool enables the conversion of digitized analog CVBS SECAM signals into standard AVI video files. For using examples please see the tests at [https://github.com/rukhov/analog-tv-tools/tree/main/pytests](https://github.com/rukhov/analog-tv-tools/tree/main/pytests).
+- **Command Line Interface (CLI)** for anlog TV decoder: This command line tool enables the conversion of digitized analog CVBS SECAM signals into standard AVI video files. For using examples please see the tests at [https://github.com/rukhov/atv-tools/tree/main/pytests](https://github.com/rukhov/atv-tools/tree/main/pytests).
 - **AnalogTv/TvDecode** GNU Radio Block: This component allows integration of the Analog TV decoder into the [GNU Radio](https://wiki.gnuradio.org/) ecosystem.
 
 ## Samples
