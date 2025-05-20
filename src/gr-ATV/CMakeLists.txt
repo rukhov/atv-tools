@@ -16,7 +16,7 @@ set(CMAKE_BUILD_TYPE
 ########################################################################
 # Project setup
 ########################################################################
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.8)
 project(gr-ATV CXX C)
 enable_testing()
 

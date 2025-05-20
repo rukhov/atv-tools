@@ -14,14 +14,8 @@
   and will be overwritten during the build process
  */
 
+static const char *__doc_gr_ATV_TvDecoder = R"doc()doc";
 
+static const char *__doc_gr_ATV_TvDecoder_TvDecoder_0 = R"doc()doc";
 
- static const char *__doc_gr_ATV_TvDecoder = R"doc()doc";
-
-
- static const char *__doc_gr_ATV_TvDecoder_TvDecoder_0 = R"doc()doc";
-
-
- static const char *__doc_gr_ATV_TvDecoder_make = R"doc()doc";
-
-  
+static const char *__doc_gr_ATV_TvDecoder_make = R"doc()doc";
