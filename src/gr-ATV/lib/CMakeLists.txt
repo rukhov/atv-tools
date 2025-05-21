@@ -15,7 +15,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED On)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_EXTENSIONS Off)
 
-list(APPEND ATV_sources TvDecoder_impl.cc)
+list(APPEND ATV_sources 
+    TvDecoder_impl.cc
+    RTSPServer.cpp
+)
 
 set(ATV_sources
     "${ATV_sources}"
@@ -29,6 +32,7 @@ add_library(gnuradio-ATV SHARED ${ATV_sources})
 target_link_libraries(gnuradio-ATV 
     PUBLIC gnuradio::gnuradio-runtime
     PUBLIC lib-atv-tools::lib-atv-tools
+    PRIVATE lib_rtsp_streamer
 )
 target_include_directories(
     gnuradio-ATV

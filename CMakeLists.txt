@@ -30,5 +30,6 @@ elseif(WIN32)
 endif()
 
 include(cmake/FindLibAtvTools.cmake)
+include(cmake/FindRTSPServerTemplate.cmake)
 
 add_subdirectory(src)

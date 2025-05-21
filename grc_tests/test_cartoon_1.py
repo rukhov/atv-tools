@@ -12,7 +12,8 @@
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio import ATV
-from gnuradio import analog
+from gnuradio import blocks
+import pmt
 from gnuradio import gr
 from gnuradio.filter import firdes
 from gnuradio.fft import window
@@ -62,20 +63,27 @@ class test_cartoon_1(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 32000
+        self.samp_rate = samp_rate = 16000000
 
         ##################################################
         # Blocks
         ##################################################
 
-        self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_UNIFORM, 1, 0)
-        self.ATV_TvDecoder_0 = ATV.TvDecoder(samp_rate, 0, 8544, 'atv')
+        self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_float*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
+        self.blocks_short_to_float_0 = blocks.short_to_float(1, (2**15))
+        self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_ff(1.333)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_short*1, '/home/rukhov/projects/analog-tv-tools/analog-tv-tools/test-data/cartoon-test-video-4-16000000Hz.i16', True, 0, 0)
+        self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
+        self.ATV_TvDecoder_0 = ATV.TvDecoder(samp_rate, 0, 8554, 'atv')
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_noise_source_x_0, 0), (self.ATV_TvDecoder_0, 0))
+        self.connect((self.blocks_file_source_0, 0), (self.blocks_short_to_float_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_0_0, 0), (self.ATV_TvDecoder_0, 0))
+        self.connect((self.blocks_short_to_float_0, 0), (self.blocks_throttle2_0, 0))
+        self.connect((self.blocks_throttle2_0, 0), (self.blocks_multiply_const_vxx_0_0, 0))
 
 
     def closeEvent(self, event):
@@ -91,6 +99,7 @@ class test_cartoon_1(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.blocks_throttle2_0.set_sample_rate(self.samp_rate)
 
 
 

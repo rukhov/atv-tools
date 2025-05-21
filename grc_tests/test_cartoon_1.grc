@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '32000'
+    value: '16000000'
   states:
     bus_sink: false
     bus_source: false
@@ -52,14 +52,14 @@ blocks:
     alias: ''
     comment: ''
     path: atv
-    port: '8544'
+    port: '8554'
     samp_rate: samp_rate
     standard: '0'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [888, 248.0]
+    coordinate: [1064, 288.0]
     rotation: 0
     state: enabled
 - name: analog_noise_source_x_0
@@ -78,12 +78,94 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 288.0]
+    coordinate: [768, 136.0]
+    rotation: 0
+    state: disabled
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: /home/rukhov/projects/analog-tv-tools/analog-tv-tools/test-data/cartoon-test-video-4-16000000Hz.i16
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: short
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [208, 280.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '1.333'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [832, 312.0]
+    rotation: 0
+    state: enabled
+- name: blocks_short_to_float_0
+  id: blocks_short_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: 2**15
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 312.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_0
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 304.0]
     rotation: 0
     state: enabled
 
 connections:
 - [analog_noise_source_x_0, '0', ATV_TvDecoder_0, '0']
+- [blocks_file_source_0, '0', blocks_short_to_float_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', ATV_TvDecoder_0, '0']
+- [blocks_short_to_float_0, '0', blocks_throttle2_0, '0']
+- [blocks_throttle2_0, '0', blocks_multiply_const_vxx_0_0, '0']
 
 metadata:
   file_format: 1

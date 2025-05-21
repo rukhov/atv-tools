@@ -11,12 +11,10 @@
             "program": "/usr/bin/python3",
             "args": ["-u", "${workspaceFolder}/grc_tests/test_cartoon_1.py"],
             "stopAtEntry": false,
-            //"cwd": "${workspaceFolder}/build/bin",
             "cwd": "${workspaceFolder}/build/src/gr-ATV/lib",
             "environment": [
                 {"name": "LD_LIBRARY_PATH", "value": "${workspaceFolder}/build/src/gr-ATV/lib"}, 
                 {"name": "GRC_BLOCKS_PATH", "value": "${workspaceFolder}/src/gr-ATV/grc"},
-                //{"name": "PYTHONPATH", "value": "${workspaceFolder}/../install/lib/python3.12/site-packages"},
                 {"name": "PYTHONPATH", "value": "${workspaceFolder}/build/src/gr-ATV/test_modules"},
                 {"name": "GST_DEBUG", "value": "2" }
             ],

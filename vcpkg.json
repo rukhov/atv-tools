@@ -1,4 +1,15 @@
 {
   "dependencies": [
+    {
+      "name": "gstreamer",
+      "features": [
+        "plugins-base",
+        "plugins-good",
+        "plugins-bad",
+        "plugins-ugly",
+        "x264"
+      ]
+    },
+    "gst-rtsp-server"
   ]
 }
