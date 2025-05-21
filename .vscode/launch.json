@@ -5,21 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Pipe Launch",
+            "name": "Linux - GRC cartoon_test_1",
             "type": "cppdbg",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/a.out",
-            "args": [],
+            "program": "/usr/bin/python3",
+            "args": ["-u", "${workspaceFolder}/grc_tests/test_cartoon_1.py"],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
+            //"cwd": "${workspaceFolder}/build/bin",
+            "cwd": "${workspaceFolder}/build/src/gr-ATV/lib",
+            "environment": [
+                {"name": "LD_LIBRARY_PATH", "value": "${workspaceFolder}/build/src/gr-ATV/lib"}, 
+                {"name": "GRC_BLOCKS_PATH", "value": "${workspaceFolder}/src/gr-ATV/grc"},
+                //{"name": "PYTHONPATH", "value": "${workspaceFolder}/../install/lib/python3.12/site-packages"},
+                {"name": "PYTHONPATH", "value": "${workspaceFolder}/build/src/gr-ATV/test_modules"},
+                {"name": "GST_DEBUG", "value": "2" }
+            ],
             "externalConsole": false,
-            "pipeTransport": {
-                "debuggerPath": "/usr/bin/gdb",
-                "pipeProgram": "/usr/bin/ssh",
-                "pipeArgs": [],
-                "pipeCwd": ""
-            },
             "MIMode": "gdb",
             "setupCommands": [
                 {

@@ -16,7 +16,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0) */
 /* BINDTOOL_USE_PYGCCXML(0) */
 /* BINDTOOL_HEADER_FILE(TvDecoder.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(a162a5ab162e5cf53b6474117963be6d) */
+/* BINDTOOL_HEADER_FILE_HASH(cd577b1d76abd8a110cf54be7ba5eba6) */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -34,10 +34,18 @@ void bind_TvDecoder(py::module& m)
 
     using TvDecoder = ::gr::ATV::TvDecoder;
 
-    py::class_<TvDecoder, gr::block, gr::basic_block, std::shared_ptr<TvDecoder>>(
-        m, "TvDecoder", D(TvDecoder))
+    py::class_<TvDecoder,
+               gr::sync_block,
+               gr::block,
+               gr::basic_block,
+               std::shared_ptr<TvDecoder>>(m, "TvDecoder", D(TvDecoder))
 
-        .def(py::init(&TvDecoder::make), py::arg("samp_rate"), D(TvDecoder, make))
+        .def(py::init(&TvDecoder::make),
+             py::arg("samp_rate"),
+             py::arg("standard"),
+             py::arg("port"),
+             py::arg("path"),
+             D(TvDecoder, make))
 
         ;
 }

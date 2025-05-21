@@ -9,7 +9,7 @@
 #define INCLUDED_ATV_TVDECODER_H
 
 #include <gnuradio/ATV/api.h>
-#include <gnuradio/block.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
 namespace ATV {
@@ -19,7 +19,7 @@ namespace ATV {
  * \ingroup ATV
  *
  */
-class ATV_API TvDecoder : virtual public gr::block
+class ATV_API TvDecoder : virtual public gr::sync_block
 {
 public:
     typedef std::shared_ptr<TvDecoder> sptr;
@@ -32,7 +32,8 @@ public:
      * class. ATV::TvDecoder::make is the public interface for
      * creating new instances.
      */
-    static sptr make(double samp_rate);
+    static sptr
+    make(double samp_rate, int standard, unsigned short port, const std::string& path);
 };
 
 } // namespace ATV

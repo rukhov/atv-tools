@@ -4,8 +4,8 @@ category: '[ATV]'
 
 templates:
   imports: from gnuradio import ATV
-  make: ATV.TvDecoder(${samp_rate})
-
+  make: ATV.TvDecoder(${samp_rate}, ${standard}, ${port}, ${path})
+  
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
 #     * id (makes the value accessible as keyname, e.g. in the make entry)
@@ -13,10 +13,24 @@ templates:
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #     * default
 parameters:
-- id: parametername_replace_me
-  label: FIX ME
+- id: samp_rate
+  label: Sample Rate
+  dtype: float
+  default: samp_rate
+- id: standard
+  label: Standard
+  dtype: enum
+  options: [0]
+  option_labels: ["SECAM"]
+  default: 0
+- id: port
+  label: Port
+  dtype: int
+  default: 8544
+- id: path
+  label: Port
   dtype: string
-  default: You need to fill in your grc/ATV_TvDecoder.block.yaml
+  default: "atv"
 #- id: ...
 #  label: ...
 #  dtype: ...
@@ -29,6 +43,9 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
+- label: cvbs
+  domain: stream
+  dtype: float
 #- label: ...
 #  domain: ...
 #  dtype: ...
