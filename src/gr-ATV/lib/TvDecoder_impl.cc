@@ -11,7 +11,7 @@
 
 #include <vector>
 
-#include <lib-atv-tools/decoder1.h>
+#include <lib-atv-tools/decoder.h>
 
 namespace gr {
 namespace ATV {
@@ -34,8 +34,7 @@ public:
                         1 /* min inputs */, 1 /* max inputs */, sizeof(input_type)),
                     gr::io_signature::make(
                         1 /* min outputs */, 1 /*max outputs */, sizeof(output_type))),
-          _decoder(atv::decoder::make(
-              atv::standard::make(atv::standard_e::SECAM), samp_rate, false, {}))
+          _decoder(atv::decoder::make(atv::standard_e::SECAM, samp_rate, {}))
     {
     }
     /*

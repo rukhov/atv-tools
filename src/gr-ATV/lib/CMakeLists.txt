@@ -27,8 +27,8 @@ endif(NOT ATV_sources)
 
 add_library(gnuradio-ATV SHARED ${ATV_sources})
 target_link_libraries(gnuradio-ATV 
-    gnuradio::gnuradio-runtime
-    lib-atv-tools::lib-atv-tools
+    PUBLIC gnuradio::gnuradio-runtime
+    PUBLIC lib-atv-tools::lib-atv-tools
 )
 target_include_directories(
     gnuradio-ATV
