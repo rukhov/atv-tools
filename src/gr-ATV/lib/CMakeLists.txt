@@ -15,6 +15,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED On)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_EXTENSIONS Off)
 
+find_package(lib-atv-tools REQUIRED)
+
 list(APPEND ATV_sources 
     TvDecoder_impl.cc
     RTSPServer.cpp

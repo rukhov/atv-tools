@@ -40,7 +40,6 @@ public:
                                                 0 /*max outputs */,
                                                 sizeof(output_type))),
           _decoder(atv::decoder::make(atv::standard_e::SECAM,
-                                      samp_rate,
                                       [this](std::span<atv::decoder::RGB> const& frame,
                                              size_t visible_rect_x,
                                              size_t visible_rect_y,
@@ -59,6 +58,7 @@ public:
           _port(port),
           _path("/" + path)
     {
+        assert(samp_rate == 16000000);
     }
     /*
      * Our virtual destructor.
@@ -88,7 +88,7 @@ private:
     {
         if (!_streamer) {
             _streamer = make_rtsp_server(
-                _port, _path.c_str(), visible_rect_width, visible_rect_height, 8000);
+                _port, _path.c_str(), visible_rect_width, visible_rect_height, 6000);
         }
 
         _streamer->on_frame(frame,
