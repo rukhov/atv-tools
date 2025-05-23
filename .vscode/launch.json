@@ -32,6 +32,40 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "Windows - GRC cartoon_test_1",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "C:/Users/rukho/radioconda/python.exe",
+            //"program": "C:\\Users\\rukho\\radioconda\\Library\\bin\\gnuradio-companion",
+            //"program": "cmd.exe",
+            //"args": ["-c", "set"],
+            "args": ["-u", "${workspaceFolder}/grc_tests/test_cartoon_1.py"],
+            "stopAtEntry": false,
+            "cwd": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\bin",
+            "environment": [
+                {"name": "PATH", "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\bin;${workspaceFolder}\\build\\src\\gr-ATV\\python\\ATV\\bindings\\RelWithDebInfo;${workspaceFolder}\\build\\src\\gr-ATV\\lib\\RelWithDebInfo;C:\\Users\\rukho\\radioconda\\Library\\bin;C:\\Users\\rukho\\radioconda\\Library;C:\\Users\\rukho\\radioconda;C:\\Users\\rukho\\radioconda\\pkgs\\libglib-2.82.2-h7025463_1\\Library\\bin"}, 
+                //{"name": "GRC_BLOCKS_PATH", "value": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\lib\\site-packages"},
+                {"name": "GRC_BLOCKS_PATH", "value": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\lib\\site-packages;${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\bin;${workspaceFolder}\\build\\src\\gr-ATV\\python\\ATV\\bindings\\RelWithDebInfo;${workspaceFolder}\\build\\src\\gr-ATV\\lib\\RelWithDebInfo;C:\\Users\\rukho\\radioconda\\Library\\bin;C:\\Users\\rukho\\radioconda\\Library;C:\\Users\\rukho\\radioconda;C:\\Users\\rukho\\radioconda\\pkgs\\libglib-2.82.2-h7025463_1\\Library\\bin"},
+                //{"name": "PYTHONPATH", "value": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\lib\\site-packages"},
+                {"name": "PYTHONPATH", "value": "${workspaceFolder}\\build\\src\\gr-ATV\\test_modules;${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\bin;${workspaceFolder}\\build\\src\\gr-ATV\\python\\ATV\\bindings\\RelWithDebInfo;${workspaceFolder}\\build\\src\\gr-ATV\\lib\\RelWithDebInfo;C:\\Users\\rukho\\radioconda\\Library\\bin;C:\\Users\\rukho\\radioconda\\Library;C:\\Users\\rukho\\radioconda;C:\\Users\\rukho\\radioconda\\pkgs\\libglib-2.82.2-h7025463_1\\Library\\bin"},
+                {"name": "GST_DEBUG", "value": "5" },
+                {"name": "GST_PLUGIN_PATH", "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\plugins" },
+            ],
+            "externalConsole": true,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
         }
 
     ]

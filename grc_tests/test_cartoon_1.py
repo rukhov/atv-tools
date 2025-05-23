@@ -7,7 +7,7 @@
 # GNU Radio Python Flow Graph
 # Title: test_cartoon_1
 # Author: rukhov
-# GNU Radio version: 3.10.11.0
+# GNU Radio version: 3.10.12.0
 
 from PyQt5 import Qt
 from gnuradio import qtgui
@@ -72,7 +72,7 @@ class test_cartoon_1(gr.top_block, Qt.QWidget):
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_float*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_short_to_float_0 = blocks.short_to_float(1, (2**15))
         self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_ff(1.333)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_short*1, '/home/rukhov/projects/analog-tv-tools/analog-tv-tools/test-data/cartoon-test-video-4-16000000Hz.i16', True, 0, 0)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_short*1, 'C:\\usr\\projects\\GitHub\\atv-tools\\atv-tools\\test-data\\cartoon-test-video-4-16000000Hz.i16', True, 0, 0)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.ATV_TvDecoder_0 = ATV.TvDecoder(samp_rate, 0, 8554, 'atv')
 
