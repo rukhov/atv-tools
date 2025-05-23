@@ -42,7 +42,7 @@ public:
     }
 
 private:
-    void on_frame(std::span<atv::decoder::RGB> const& src,
+    void on_frame(std::span<atv::decoder::RGB_color> const& src,
                   size_t visible_rect_x,
                   size_t visible_rect_y,
                   size_t visible_rect_width,
@@ -58,8 +58,8 @@ private:
 
                 auto rgb = src[(x + visible_rect_x) + (y + visible_rect_y) * total_width];
 
-                *(atv::decoder::RGB*)(&(
-                    _frame[x * sizeof(atv::decoder::RGB) + y * stride()])) = rgb;
+                *(atv::decoder::RGB_color*)(&(
+                    _frame[x * sizeof(atv::decoder::RGB_color) + y * stride()])) = rgb;
             }
         }
     }

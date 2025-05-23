@@ -2,7 +2,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   lib-atv-tools-package
-  URL file://$ENV{HOME}/projects/analog-tv-tools/lib-atv-tools.zip
+  URL ${CMAKE_CURRENT_SOURCE_DIR}/resources/lib-atv-tools-windows-x64.zip
 )
 
 FetchContent_MakeAvailable(lib-atv-tools-package)

@@ -1,5 +1,7 @@
 {
   "dependencies": [
+    "boost",
+    "pybind11",
     {
       "name": "gstreamer",
       "features": [
@@ -10,6 +12,7 @@
         "x264"
       ]
     },
-    "gst-rtsp-server"
+    "gst-rtsp-server",
+    "pkgconf"
   ]
 }

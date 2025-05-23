@@ -39,22 +39,23 @@ public:
                          gr::io_signature::make(0 /* min outputs */,
                                                 0 /*max outputs */,
                                                 sizeof(output_type))),
-          _decoder(atv::decoder::make(atv::standard_e::SECAM,
-                                      [this](std::span<atv::decoder::RGB> const& frame,
-                                             size_t visible_rect_x,
-                                             size_t visible_rect_y,
-                                             size_t visible_rect_width,
-                                             size_t visible_rect_height,
-                                             size_t total_width,
-                                             size_t total_height) {
-                                          on_frame_ready(frame,
-                                                         visible_rect_x,
-                                                         visible_rect_y,
-                                                         visible_rect_width,
-                                                         visible_rect_height,
-                                                         total_width,
-                                                         total_height);
-                                      })),
+          _decoder(
+              atv::decoder::make(atv::standard_e::SECAM,
+                                 [this](std::span<atv::decoder::RGB_color> const& frame,
+                                        size_t visible_rect_x,
+                                        size_t visible_rect_y,
+                                        size_t visible_rect_width,
+                                        size_t visible_rect_height,
+                                        size_t total_width,
+                                        size_t total_height) {
+                                     on_frame_ready(frame,
+                                                    visible_rect_x,
+                                                    visible_rect_y,
+                                                    visible_rect_width,
+                                                    visible_rect_height,
+                                                    total_width,
+                                                    total_height);
+                                 })),
           _port(port),
           _path("/" + path)
     {
@@ -78,7 +79,7 @@ public:
     }
 
 private:
-    void on_frame_ready(std::span<atv::decoder::RGB> const& frame,
+    void on_frame_ready(std::span<atv::decoder::RGB_color> const& frame,
                         size_t visible_rect_x,
                         size_t visible_rect_y,
                         size_t visible_rect_width,

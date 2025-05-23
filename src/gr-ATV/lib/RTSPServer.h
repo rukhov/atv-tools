@@ -2,6 +2,8 @@
 
 #include "Streamer.h"
 
+#include <string>
+
 namespace gr::AnalogTV {
 std::unique_ptr<Streamer> make_rtsp_server(uint16_t port,
                                            std::string const& mount_point,
