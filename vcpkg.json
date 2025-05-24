@@ -4,6 +4,7 @@
     "pybind11",
     "libsndfile",
     "opencv4",
+    "iir1",
     {
       "name": "gstreamer",
       "features": [
