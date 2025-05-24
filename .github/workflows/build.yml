@@ -22,9 +22,6 @@ jobs:
           - os: windows-latest
             platform: windows
             arch: x64
-          - os: ubuntu-latest
-            platform: linux
-            arch: x64
 
     steps:
       - name: Install Ubuntu Prerequisites
