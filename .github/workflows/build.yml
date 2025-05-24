@@ -1,0 +1,80 @@
+name: Build Aanalog TV Tools
+run-name: Build No.${{ github.run_number }} on behalf of ${{ github.actor }}
+
+on:
+    workflow_dispatch:
+    #pull_request: 
+    #    types: [opened, reopened, synchronize]
+    push: 
+        branches: [main]
+
+jobs:
+
+  build:
+    env: 
+      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        include:
+          - os: windows-latest
+            platform: windows
+            arch: x64
+          - os: ubuntu-latest
+            platform: linux
+            arch: x64
+
+    steps:
+      - name: Install Ubuntu Prerequisites
+        if: ${{ matrix.platform == 'linux' }}
+        run: |
+          gcc --version
+          sudo apt-get update
+          sudo apt-get --yes install autoconf automake pkg-config autoconf-archive
+          sudo apt-get --yes install liburing-dev libx11-dev libxft-dev libtool bison gperf libgles2-mesa-dev libxext-dev libxrandr-dev libxi-dev 
+          sudo apt-get --yes install libxcursor-dev libxdamage-dev libxinerama-dev libltdl-dev libxtst-dev doxygen gnuradio gnuradio-dev 
+          sudo apt-get --yes install python3-opencv python3-pytest flex nasm
+          #sudo apt-get --yes install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+          sudo apt-get --yes install libgstreamer* libgstrtspserver*
+          sudo apt-get --yes install libltdl-dev
+
+      - name: Install Windows Prerequisites
+        if: ${{ matrix.platform == 'windows' }}
+        run: |
+          pip3 install opencv-python pytest
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+
+      - name: Configure project
+        run: |
+          cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build
+
+      - name: Build
+        run: |
+          cmake --build ./build --config=Release
+
+      - name: Make installation
+        run: |
+          cmake --install ./build --prefix=./install --config=Release
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: atv-tools-${{ matrix.platform }}
+          include-hidden-files: true
+          path: |
+            install/
+
+      - name: Run Tests
+        run: |
+          ctest --test-dir ./build -T test --output-on-failure -C Release --verbose --output-log ./reports/tests.log

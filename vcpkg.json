@@ -2,6 +2,8 @@
   "dependencies": [
     "boost",
     "pybind11",
+    "libsndfile",
+    "opencv4",
     {
       "name": "gstreamer",
       "features": [
