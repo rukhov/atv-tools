@@ -75,7 +75,6 @@
             "args": [
                 "--input-type", "i16",
                 "--input-data-type", "cvbs",
-                //"--out-cvbs-raw-file", "",
                 "--standard", "secam",
                 "--input-file", "${workspaceFolder}/test-data/cartoon-test-video-4-16000000Hz.i16",
                 "--output-file", "${workspaceFolder}/tmp/test.avi",
