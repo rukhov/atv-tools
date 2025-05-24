@@ -50,8 +50,44 @@
                 {"name": "GRC_BLOCKS_PATH", "value": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\lib\\site-packages;${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\bin;${workspaceFolder}\\build\\src\\gr-ATV\\python\\ATV\\bindings\\RelWithDebInfo;${workspaceFolder}\\build\\src\\gr-ATV\\lib\\RelWithDebInfo;C:\\Users\\rukho\\radioconda\\Library\\bin;C:\\Users\\rukho\\radioconda\\Library;C:\\Users\\rukho\\radioconda;C:\\Users\\rukho\\radioconda\\pkgs\\libglib-2.82.2-h7025463_1\\Library\\bin"},
                 //{"name": "PYTHONPATH", "value": "C:\\usr\\projects\\GitHub\\atv-tools\\install\\lib\\site-packages"},
                 {"name": "PYTHONPATH", "value": "${workspaceFolder}\\build\\src\\gr-ATV\\test_modules;${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\bin;${workspaceFolder}\\build\\src\\gr-ATV\\python\\ATV\\bindings\\RelWithDebInfo;${workspaceFolder}\\build\\src\\gr-ATV\\lib\\RelWithDebInfo;C:\\Users\\rukho\\radioconda\\Library\\bin;C:\\Users\\rukho\\radioconda\\Library;C:\\Users\\rukho\\radioconda;C:\\Users\\rukho\\radioconda\\pkgs\\libglib-2.82.2-h7025463_1\\Library\\bin"},
-                {"name": "GST_DEBUG", "value": "5" },
                 {"name": "GST_PLUGIN_PATH", "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\plugins" },
+                {"name": "GST_DEBUG", "value": "5" },
+            ],
+            "externalConsole": true,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Windows - atv-tools-cli",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/src/atv-tools-cli/Debug/atv-tools-cli.exe",
+            "args": [
+                "--input-type", "i16",
+                "--input-data-type", "cvbs",
+                //"--out-cvbs-raw-file", "",
+                "--standard", "secam",
+                "--input-file", "${workspaceFolder}/test-data/cartoon-test-video-4-16000000Hz.i16",
+                "--output-file", "${workspaceFolder}/tmp/test.avi",
+                "--sample-rate", "16000000",
+                "--dc-correction", "0",
+                "--amplification", "1.333",
+                "--max-frames", "0"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build/src/atv-tools-cli/Debug",
+            "environment": [
+                {"name": "PATH", "value": ""}, 
             ],
             "externalConsole": true,
             "setupCommands": [
@@ -67,6 +103,5 @@
                 }
             ]
         }
-
     ]
 }
