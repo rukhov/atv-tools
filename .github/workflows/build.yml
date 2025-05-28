@@ -58,7 +58,7 @@ jobs:
 
       - name: Configure project
         run: |
-          cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build
+          cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
 
       - name: Build
         run: |

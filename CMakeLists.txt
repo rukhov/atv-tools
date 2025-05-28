@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.26)
 
 project(atv-tools VERSION 1.0.0 LANGUAGES CXX C)
 
+option(BUILD_GNURADIO_BLOCKS "Build the gnuradio blocks" ON)
+
 set( CMAKE_MESSAGE_LOG_LEVEL VERBOSE )
 #set( EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin )
 #set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
