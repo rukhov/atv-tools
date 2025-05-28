@@ -7,8 +7,9 @@ set(CMAKE_CXX_EXTENSIONS Off)
 find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(SndFile REQUIRED)
 find_package(iir CONFIG REQUIRED)
-find_package(lib-atv-tools REQUIRED)
 find_package(OpenCV REQUIRED)
+
+find_package(lib-atv-tools CONFIG REQUIRED)
 
 add_executable(${TARGET_NAME})
 
@@ -25,8 +26,13 @@ target_precompile_headers(${TARGET_NAME} PRIVATE stdafx.h)
 
 target_link_libraries(${TARGET_NAME} PRIVATE 
     Boost::program_options 
+    lib-atv-tools::lib-atv-tools
     SndFile::sndfile 
     opencv_videoio
-	iir::iir
-    lib-atv-tools::lib-atv-tools
+	  iir::iir
 )
+
+add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:${TARGET_NAME}> $<TARGET_FILE_DIR:${TARGET_NAME}>
+  COMMAND_EXPAND_LISTS
+) 

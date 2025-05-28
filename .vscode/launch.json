@@ -53,7 +53,7 @@
                 {"name": "GST_PLUGIN_PATH", "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\plugins" },
                 {"name": "GST_DEBUG", "value": "5" },
             ],
-            "externalConsole": true,
+            "console": "integratedTerminal",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -71,24 +71,25 @@
             "name": "Windows - atv-tools-cli",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/src/atv-tools-cli/Debug/atv-tools-cli.exe",
+            "program": "${workspaceFolder}/build/bin/Release/atv-tools-cli.exe",
             "args": [
                 "--input-type", "i16",
                 "--input-data-type", "cvbs",
                 "--standard", "secam",
                 "--input-file", "${workspaceFolder}/test-data/cartoon-test-video-4-16000000Hz.i16",
-                "--output-file", "${workspaceFolder}/tmp/test.avi",
+                "--output-file", "/tmp/test.avi",
                 "--sample-rate", "16000000",
                 "--dc-correction", "0",
                 "--amplification", "1.333",
-                "--max-frames", "0"
+                "--max-frames", "0",
+                "--bw", "false"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build/src/atv-tools-cli/Debug",
+            "cwd": "${workspaceFolder}/build/bin/Release",
             "environment": [
                 {"name": "PATH", "value": ""}, 
             ],
-            "externalConsole": true,
+            "console": "integratedTerminal",// "externalTerminal",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

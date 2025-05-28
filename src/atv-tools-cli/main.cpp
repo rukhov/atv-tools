@@ -57,7 +57,6 @@ int main(int argc, char *argv[])
             catch (std::exception const &e)
             {
                 std::cerr << std::format("Failed to create video writer: {}\n", e.what());
-                return -1;
             }
         }
 
@@ -73,19 +72,16 @@ int main(int argc, char *argv[])
         {
             std::cout << std::format("Frame: {}\r", frameNum) << std::flush;
 
-            if constexpr (1)
+            if (writer)
             {
                 timer timer;
-                if (writer)
-                {
-                    writer->process_frame(frame,
-                                          visible_rect_x,
-                                          visible_rect_y,
-                                          visible_rect_width,
-                                          visible_rect_height,
-                                          total_width,
-                                          total_height);
-                }
+                writer->process_frame(frame,
+                                      visible_rect_x,
+                                      visible_rect_y,
+                                      visible_rect_width,
+                                      visible_rect_height,
+                                      total_width,
+                                      total_height);
                 video_encode_duration += timer.duration();
             }
 
@@ -95,7 +91,7 @@ int main(int argc, char *argv[])
                 b_Stop = true;
         };
 
-        std::vector<float> in_buffer(1024 * 4);
+        std::vector<float> in_buffer(1024 * 16);
         level_corrector<float> level_corrector(opts.dc_correction,
                                                opts.amplification);
 
