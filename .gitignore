@@ -1,7 +1,7 @@
 /build
 /install
 __pycache__
-
+.pytest_cache
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
