@@ -69,13 +69,13 @@ jobs:
         run: |
           cmake --install ./build --prefix=./install --config=Release
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: atv-tools-${{ matrix.platform }}
-          include-hidden-files: true
-          path: |
-            install/
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: atv-tools-${{ matrix.platform }}
+#          include-hidden-files: true
+#          path: |
+#            install/
 
       - name: Run Tests
         run: |
