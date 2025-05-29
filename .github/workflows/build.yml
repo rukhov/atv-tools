@@ -48,10 +48,6 @@ jobs:
       - name: Setup Vcpkg cache
         uses: rukhov/github-actions/.github/actions/vcpkg-cache@main
 
-      - name: vcpkg install
-        run: |
-          vcpkg install
-
       - name: Configure project
         run: |
           cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
