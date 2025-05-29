@@ -3,8 +3,8 @@ run-name: Build No.${{ github.run_number }} on behalf of ${{ github.actor }}
 
 on:
     workflow_dispatch:
-    #pull_request: 
-    #    types: [opened, reopened, synchronize]
+    pull_request: 
+        types: [opened, reopened, synchronize]
     push: 
         branches: [main]
 
@@ -12,7 +12,8 @@ jobs:
 
   build:
     env: 
-      VCPKG_INSTALLATION_ROOT: ${{ replace(github.workspace, 'A', 'B') }}/vcpkg
+      #VCPKG_INSTALLATION_ROOT: ${{ replace( {github.workspace} , 'A', 'B') }}/vcpkg
+      VCPKG_INSTALLATION_ROOT: ${{ replace( 'AAA' , 'A', 'B') }}/vcpkg
 
     runs-on: ${{ matrix.os }}
     strategy:
