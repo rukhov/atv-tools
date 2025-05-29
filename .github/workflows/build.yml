@@ -12,8 +12,7 @@ jobs:
 
   build:
     env: 
-      #VCPKG_INSTALLATION_ROOT: ${{ replace( {github.workspace} , 'A', 'B') }}/vcpkg
-      VCPKG_INSTALLATION_ROOT: ${{ replace( 'AAA' , 'A', 'B') }}/vcpkg
+      VCPKG_INSTALLATION_ROOT: ${{ github.workspace }}/vcpkg
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -48,9 +47,6 @@ jobs:
 
       - name: Setup Vcpkg cache
         uses: rukhov/github-actions/.github/actions/vcpkg-cache@main
-
-        with:
-          vcpkg-root-path: ${{ env.VCPKG_INSTALLATION_ROOT }}
 
       - name: vcpkg install
         run: |
