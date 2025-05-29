@@ -74,3 +74,4 @@ jobs:
       - name: Run Tests
         run: |
           ctest --test-dir ./build -T test --output-on-failure -C Release --verbose --output-log ./reports/tests.log
+          
