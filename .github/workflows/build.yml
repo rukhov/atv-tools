@@ -48,6 +48,9 @@ jobs:
       - name: Setup Vcpkg cache
         uses: rukhov/github-actions/.github/actions/vcpkg-cache@main
 
+        with:
+          vcpkg-root-path: ${{ env.VCPKG_INSTALLATION_ROOT }}
+
       - name: Configure project
         run: |
           cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
