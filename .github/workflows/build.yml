@@ -47,6 +47,7 @@ jobs:
 
       - name: Setup Vcpkg cache
         uses: rukhov/github-actions/.github/actions/vcpkg-cache@main
+
         with:
           vcpkg-root-path: ${{ env.VCPKG_INSTALLATION_ROOT }}
 
