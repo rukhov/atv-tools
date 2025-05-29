@@ -12,7 +12,7 @@ jobs:
 
   build:
     env: 
-      VCPKG_INSTALLATION_ROOT: ${{ github.workspace }}/vcpkg
+      VCPKG_INSTALLATION_ROOT: ${{ replace(github.workspace, '\\', '/') }}/vcpkg
 
     runs-on: ${{ matrix.os }}
     strategy:
