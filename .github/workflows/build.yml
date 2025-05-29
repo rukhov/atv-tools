@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Vcpkg cache
-        uses: rukhov/github-actions@cache/.github/actions/vcpkg-cache
+        uses: rukhov/github-actions/.github/actions/vcpkg-cache@cache
         with:
           vcpkg-root-path: ${{ env.VCPKG_INSTALLATION_ROOT }}
 
