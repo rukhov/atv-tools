@@ -53,25 +53,26 @@ jobs:
 
       - name: Configure project
         run: |
-          cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
+          cmake --preset=${{ matrix.platform }}-rel-opt -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
 
       - name: Build
         run: |
-          cmake --build ./build --config=Release
+          cmake --build ./build --config=RelWithDebInfo
 
       - name: Make installation
         run: |
-          cmake --install ./build --prefix=./install --config=Release
-
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: atv-tools-${{ matrix.platform }}
-#          include-hidden-files: true
-#          path: |
-#            install/
+          cmake --install ./build --prefix=./install --config=RelWithDebInfo
 
       - name: Run Tests
         run: |
-          ctest --test-dir ./build -T test --output-on-failure -C Release --verbose --output-log ./reports/tests.log
-          
+          ctest --test-dir ./build -T test --output-on-failure -C RelWithDebInfo --verbose --output-log ./install/reports/tests.log
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atv-tools-${{ matrix.platform }}
+          include-hidden-files: true
+          path: |
+            install/
+
