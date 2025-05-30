@@ -11,8 +11,6 @@ on:
 jobs:
 
   build:
-    env: 
-      VCPKG_INSTALLATION_ROOT: ${{ github.workspace }}/vcpkg
 
     runs-on: ${{ matrix.os }}
     strategy:
