@@ -48,19 +48,19 @@ jobs:
 
       - name: Configure project
         run: |
-          cmake --preset=${{ matrix.platform }}-rel-opt -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
+          cmake --preset=${{ matrix.platform }}-rel -S ./ -B ./build -DBUILD_GNURADIO_BLOCKS=OFF
 
       - name: Build
         run: |
-          cmake --build ./build --config=RelWithDebInfo
+          cmake --build ./build --config=Release
 
       - name: Make installation
         run: |
-          cmake --install ./build --prefix=./install --config=RelWithDebInfo
+          cmake --install ./build --prefix=./install --config=Release
 
       - name: Run Tests
         run: |
-          ctest --test-dir ./build -T test --output-on-failure -C RelWithDebInfo --verbose --output-log ./install/reports/tests.log
+          ctest --test-dir ./build -T test --output-on-failure -C Release --verbose --output-log ./install/reports/tests.log
 
       - name: Upload artifacts
         if: always()
