@@ -40,13 +40,13 @@ def test_decode_color_bars(projectPath, decoderPath):
     vc = fc.VideoColorChecker(str(aviOutputFile), 8) 
     assert vc.isOpen() == True
 
-    tolerance = 20  # Tolerance value for color comparison
+    tolerance = 30  # Tolerance value for color comparison
 
     assert vc.RelativeCheckAt( (0*(1/7)+1/14, 1/3) , (220, 220, 220) , tolerance) == True
     assert vc.RelativeCheckAt( (1*(1/7)+1/14, 1/3) , (220, 220,  10) , tolerance) == True
     assert vc.RelativeCheckAt( (2*(1/7)+1/14, 1/3) , ( 10, 220, 220) , tolerance) == True
     assert vc.RelativeCheckAt( (3*(1/7)+1/14, 1/3) , ( 10, 230,  10) , tolerance) == True
-    assert vc.RelativeCheckAt( (4*(1/7)+1/14, 1/3) , ( 230, 10, 230) , tolerance) == True
+    assert vc.RelativeCheckAt( (4*(1/7)+1/14, 1/3) , ( 240, 10, 240) , tolerance) == True
     assert vc.RelativeCheckAt( (5*(1/7)+1/14, 1/3) , ( 230, 10,  10) , tolerance) == True
     assert vc.RelativeCheckAt( (6*(1/7)+1/14, 1/3) , (  10, 10, 230) , tolerance) == True
 

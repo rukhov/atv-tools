@@ -5,6 +5,7 @@
     "libsndfile",
     "opencv4",
     "iir1",
+    "kissfft",
     {
       "name": "gstreamer",
       "features": [
