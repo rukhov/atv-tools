@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS Off)
 find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(SndFile REQUIRED)
 find_package(iir CONFIG REQUIRED)
+find_package(kissfft CONFIG REQUIRED)
 find_package(OpenCV REQUIRED)
 
 find_package(lib-atv-tools CONFIG REQUIRED)
@@ -30,6 +31,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
     SndFile::sndfile 
     opencv_videoio
 	  iir::iir
+    kissfft::kissfft-float
 )
 
 add_custom_command(TARGET ${TARGET_NAME} POST_BUILD

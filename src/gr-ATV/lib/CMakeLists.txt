@@ -16,6 +16,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_EXTENSIONS Off)
 
 find_package(iir CONFIG REQUIRED)
+find_package(kissfft CONFIG REQUIRED)
 find_package(lib-atv-tools REQUIRED)
 
 list(APPEND ATV_sources 
@@ -37,6 +38,7 @@ target_link_libraries(gnuradio-ATV
     PUBLIC lib-atv-tools::lib-atv-tools
     PRIVATE lib_rtsp_streamer
 	iir::iir
+    kissfft::kissfft-float
 )
 target_include_directories(
     gnuradio-ATV

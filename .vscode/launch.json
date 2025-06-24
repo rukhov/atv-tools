@@ -34,7 +34,7 @@
             ]
         },
         {
-            "name": "Windows - GRC cartoon_test_1",
+            "name": "Windows - GRC test RelWithDebInfo",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "C:/Users/rukho/radioconda/python.exe",
@@ -66,6 +66,60 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "preLaunchTask": "copy-grc-release-bins",
+            "name": "Windows GNURADIO editor - Release",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "windows": {},
+            //"program": "C:/Users/rukho/radioconda/python.exe",
+            "program": "C:/Users/rukho/radioconda/Library/bin/gnuradio-companion.exe",
+            //"program": "C:/usr/tools/depends-1.1-x64/DependenciesGui.exe",
+            "args": [
+                //"-u", "C:/usr/projects/GitHub/atv-tools/atv-tools/grc_tests/test_cartoon_1.py"
+                //"-u", "C:/usr/projects/grc/test_block.py "
+            ],
+            "stopAtEntry": false,
+            "cwd": "C:/Users/rukho/radioconda",
+            "environment": 
+                [
+                    {"name": "PATH", "value": "C:/Users/rukho/radioconda/pkgs/gnuradio-core-3.10.12.0-py312h509acc3_1/Library/bin;${workspaceFolder}/build/bin/Release;${workspaceFolder}/build/src/gr-ATV/test_modules/gnuradio/ATV;C:/Users/rukho/radioconda/Library/bin;${workspaceFolder}/build/vcpkg_installed/x64-windows/bin;%PATH%"}, 
+                    {"name": "GRC_BLOCKS_PATH", "value": "${workspaceFolder}/src/gr-ATV/grc;C:/Users/rukho/radioconda/Library/share/gnuradio/grc/blocks;C:/Users/rukho/AppData/Roaming/.local/state/gnuradio;%GRC_BLOCKS_PATH%"},
+                    {"name": "PYTHONPATH", "value": "C:/usr/projects/GitHub/atv-tools/atv-tools/build/src/gr-ATV/test_modules;%PYTHONPATH%"},
+                    {
+                        "name": "GST_PLUGIN_PATH",
+                        "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\plugins"
+                    },
+                ],
+            "externalConsole": true
+        },
+        {
+            "preLaunchTask": "copy-grc-debug-bins",
+            "name": "Windows GNURADIO editor - Debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "windows": {},
+            //"program": "C:/Users/rukho/radioconda/python.exe",
+            "program": "C:/Users/rukho/radioconda/Library/bin/gnuradio-companion.exe",
+            //"program": "C:/usr/tools/depends-1.1-x64/DependenciesGui.exe",
+            "args": [
+                //"-u", "C:/usr/projects/GitHub/atv-tools/atv-tools/grc_tests/test_cartoon_1.py"
+                //"-u", "C:/usr/projects/grc/test_block.py "
+            ],
+            "stopAtEntry": false,
+            "cwd": "C:/Users/rukho/radioconda",
+            "environment": 
+                [
+                    {"name": "PATH", "value": "C:/Users/rukho/radioconda/pkgs/gnuradio-core-3.10.12.0-py312h509acc3_1/Library/bin;${workspaceFolder}/build/bin/RelWithDebInfo;${workspaceFolder}/build/src/gr-ATV/test_modules/gnuradio/ATV;C:/Users/rukho/radioconda/Library/bin;${workspaceFolder}/build/vcpkg_installed/x64-windows/bin;%PATH%"}, 
+                    {"name": "GRC_BLOCKS_PATH", "value": "${workspaceFolder}/src/gr-ATV/grc;C:/Users/rukho/radioconda/Library/share/gnuradio/grc/blocks;C:/Users/rukho/AppData/Roaming/.local/state/gnuradio;%GRC_BLOCKS_PATH%"},
+                    {"name": "PYTHONPATH", "value": "C:/usr/projects/GitHub/atv-tools/atv-tools/build/src/gr-ATV/test_modules;%PYTHONPATH%"}
+                    {
+                        "name": "GST_PLUGIN_PATH",
+                        "value": "${workspaceFolder}\\build\\vcpkg_installed\\x64-windows\\plugins"
+                    },
+                ],
+            "externalConsole": true
         },
         {
             "name": "Windows - atv-tools-cli",

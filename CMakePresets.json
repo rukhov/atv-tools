@@ -6,7 +6,6 @@
       "generator": "Unix Makefiles",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Debug"
       }
@@ -16,7 +15,6 @@
       "generator": "Unix Makefiles",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -28,7 +26,7 @@
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
       }
     },
     {
@@ -37,18 +35,6 @@
       "architecture": "x64",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-      }
-    },
-    {
-      "name": "windows-rel-opt",
-      "generator": "Visual Studio 17 2022",
-      "architecture": "x64",
-      "binaryDir": "${sourceDir}/build",
-      "cacheVariables": {
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -58,19 +44,13 @@
     {
       "name": "windows-rel",
       "configurePreset": "windows-rel",
-      "configuration": "RelWithDebInfo",
-      "jobs": 8
-    },
-    {
-      "name": "windows-rel-opt",
-      "configurePreset": "windows-rel-opt",
       "configuration": "Release",
       "jobs": 8
     },
     {
       "name": "windows-dbg",
       "configurePreset": "windows-dbg",
-      "configuration": "Debug",
+      "configuration": "RelWithDebInfo",
       "jobs": 8
     }
   ],
@@ -78,7 +58,7 @@
     {
       "name": "windows-dbg",
       "configurePreset": "windows-dbg",
-      "configuration": "Debug",
+      "configuration": "RelWithDebInfo",
       "output": {"outputOnFailure": true},
       "execution": {"noTestsAction": "error", "stopOnFailure": true}
     },
