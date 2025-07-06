@@ -7,7 +7,7 @@ This project focuses on developing a suite of software tools for decoding analog
 
 ### Please visit this YouTube [link](https://youtu.be/bhZ7-RjFCNY) to see demo.
 
-[![IMAGE ALT TEXT HERE](https://i9.ytimg.com/vi_webp/bhZ7-RjFCNY/maxresdefault.webp?v=6856d7d6&sqp=CMT6k8MG&rs=AOn4CLADdfBHH9Fjy4L4efyQPyp76JydLA)](https://youtu.be/bhZ7-RjFCNY)
+[![IMAGE ALT TEXT HERE](https://github.com/user-attachments/assets/775e349b-aebf-4b4a-b58e-6b0e2c3408e0)](https://youtu.be/bhZ7-RjFCNY)
 
 ### Decoded video fragment
 https://github.com/user-attachments/assets/aca3b354-d356-47e6-95f8-39b7d00446ff
