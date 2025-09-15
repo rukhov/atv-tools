@@ -1,5 +1,5 @@
 # Analog TV Tools project
-This project focuses on developing a suite of software tools for decoding analog TV signals. The current toolset includes two primary components:
+This project focuses on developing a suite of software tools for **realtime** decoding analog TV signals. The current toolset includes two primary components:
 - **Command Line Interface (CLI)** for anlog TV decoder: This command line tool enables the conversion of digitized analog CVBS SECAM signals into usual AVI video files. For usage examples please see the tests at [https://github.com/rukhov/atv-tools/tree/main/pytests](https://github.com/rukhov/atv-tools/tree/main/pytests).
 - **ATV/TvDecoder** GNU Radio Block: This component allows integration of the Analog TV decoder into the [GNU Radio](https://wiki.gnuradio.org/) ecosystem.
 
